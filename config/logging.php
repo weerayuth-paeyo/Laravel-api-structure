@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Monolog\Handler\NullHandler;
 use Monolog\Handler\StreamHandler;
 use Monolog\Handler\SyslogUdpHandler;
@@ -112,6 +113,20 @@ return [
 
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
+        ],
+
+        'request_in' => [
+            'driver' => 'single',
+            'name' => 'request_in',
+            'path' => storage_path('logs/request_in/' . Carbon::now()->format('Ymd') . '.log'),
+            'level' => 'debug',
+        ],
+
+        'authentications' => [
+            'driver' => 'single',
+            'name' => 'authentications',
+            'path' => storage_path('logs/authentications/' . Carbon::now()->format('Ymd') . '.log'),
+            'level' => 'debug',
         ],
     ],
 

@@ -2,6 +2,8 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\LogRequestIn;
+use App\Http\Middleware\SmartAuthentication;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -63,5 +65,8 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+
+        'log.request.in' => LogRequestIn::class,
+        'auth.smart' =>  SmartAuthentication::class,
     ];
 }
